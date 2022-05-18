@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<meta charset="UTF-8">
+
+<div layout:fragment="content">
+
+    <div class="alert alert-primary " th:if="${mensagem != null}"
+         th:text="${mensagem}"></div>
+    <div class="card mb-3">
+
+    <div class="container   " >
+        <div class="col-12" >
+            <h2>Carrinho de compra</h2><br><br>
+        </div>
+
+        <div class="row">
+            <div class="col-12" >
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Evento</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Ingressos Restantes</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col" class="text-right">Preço Unitário</th>
+                            <th scope="col" class="text-right">Preço Total</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="item: ${listaItens}">
+                            <td th:text="${item.evento.nome}"></td>
+                            <td th:text="${#dates.format(item.evento.data, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${item.evento.capacidade}"></td>
+                            <td><span th:text="${item.quantidade}"> </span>
+                            </td>
+                            <td th:text="'R$' + ${#numbers.formatDecimal(item.evento.valorIngresso, 0, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$' + ${#numbers.formatDecimal(item.valorTotal, 0, 'POINT', 2, 'COMMA')}"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"
+                                th:text="'R$' + ${#numbers.formatDecimal(compra.valorTotal, 0, 'POINT', 2, 'COMMA')}"></td>
+                            <td></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a class="btn btn-lg btn-block btn-primary" style="width: 76%" th:href="@{/home}">Continuar comprando</a>
+                </div>
+                <div class="col-sm-12  col-md-6" style="text-align: right;">
+                    <a class="btn btn-lg btn-block btn-success" style="width: 76%" th:href="@{/confirmar}">Confirmar compra</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- </div> -->
+
+</div>
+
+
+</html>

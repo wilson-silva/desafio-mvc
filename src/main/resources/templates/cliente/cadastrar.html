@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+
+<head>
+    <title>cadastro</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="alert alert-primary " th:if="${mensagem != null}"
+         th:text="${mensagem}"></div>
+
+    <div class="container">
+
+        <div class="row">
+            <!-- Tela de cadastro de usuário -->
+            <div class="col-sm-6  col-md-6 container clearfix">
+                <div class="card">
+                    <div class="card-header mb-3">
+                        <p class="text-primary" style="text-align:center"><strong>Cadastro</strong></p>
+                    </div>
+                    <div class="card-body mb-3">
+
+                        <form method="POST" th:object="${usuario}" th:action="@{/usuario/novo}">
+                            <input type="hidden" th:field="*{id}">
+
+                            <div class="form-row">
+
+                                <div class="form-group mb-3">
+                                    <label for="nome">Nome: </label>
+                                    <input class="form-control" type="text" th:field="*{nome}"
+                                           placeholder="nome" required></input>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="username">Username: </label>
+                                    <input class="form-control" type="text" th:field="*{username}"
+                                           placeholder="username" required></input>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="password">Password: </label>
+                                    <input class="form-control" type="password" th:field="*{password}"
+                                           placeholder="password" required></input>
+                                </div>
+                                <button class="btn btn-primary" type="submit" style="text-align:center">Cadastrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</html>
+
+

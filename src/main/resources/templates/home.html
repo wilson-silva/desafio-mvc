@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<meta charset="UTF-8">
+
+<div layout:fragment="content">
+    <h1 style="text-align:center">Bem-vindo: <span sec:authentication="name"></span></h1><br><br>
+
+    <div th:each="evento: ${lista}" class="container detalhesEvento">
+
+
+
+        <th:block th:switch="${evento.genero}">
+            <span th:case="${T(com.gft.gerenciadorEventos.entities.Genero).SAMBA}"><img src="samba.png"
+                                                                                        class="float-start"
+                                                                                        alt="logo-samba"
+                                                                                        width="150"
+                                                                                        height="150"></span>
+
+            <span th:case="${T(com.gft.gerenciadorEventos.entities.Genero).SERTANEJO}"><img src="sertanejo.jpeg"
+                                                                                            class="float-start"
+                                                                                            alt="logo-sertanejo"
+                                                                                            width="150"
+                                                                                            height="150"></span>
+
+            <span th:case="${T(com.gft.gerenciadorEventos.entities.Genero).ROCK}"><img src="rock.jpeg"
+                                                                                       class="float-start"
+                                                                                       alt="logo-rock"
+                                                                                       width="150"
+                                                                                       height="150"></span>
+
+        </th:block>
+<!--
+
+              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).SAMBA}"><img src="samba.jpeg"
+                                                                                                      class="float-start"
+                                                                                                      alt="logo-samba"
+                                                                                                      width="150"
+                                                                                                      height="150"></p>
+
+              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).SERTANEJO}"><img src="sertanejo.jpeg"
+                                                                                                      class="float-start"
+                                                                                                      alt="logo-sertanejo"
+                                                                                                      width="150"
+                                                                                                      height="150"></p>
+
+              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).ROCK}"><img src="rock.jpeg"
+                                                                                                          class="float-start"
+                                                                                                          alt="logo-rock"
+                                                                                                          width="150"
+                                                                                                          height="150"></p>
+
+
+-->
+        <div class="container4">
+            <p><strong><span th:text="${evento.nome}"></span></strong></p>
+            <p>Preço do Ingresso: <span
+                    th:text="'R$' + ${#numbers.formatDecimal(evento.valorIngresso, 0, 'POINT', 2, 'COMMA')}"></span></p>
+            <p>Data: <span th:text="${#dates.format(evento.data, 'dd/MM/yyyy')}"></span></p>
+            <p>Local: <span th:text="${evento.casas.endereco}"></span></p>
+            <p>Ingresso Restantes: <span th:text="${evento.capacidade}"></span></p>
+            <a class="btn btn-primary btn-sm mb-3" th:href="@{/adicionarVenda/{id}(id=${evento.id})}">Comprar</a>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!------------------------------------------------------------------------------------ -->
+
+
+<div layout:fragment="scripts">
+    <script>
+				$(function() {
+				$("#_data").datepicker({
+				dateFormat: "dd/mm/yy",
+				timeFormat:  "hh:mm:ss",
+					altFormat: "yy-mm-dd",
+					altField: "#data"
+				});
+				});
+
+    </script>
+</div>
+
+
+</html>

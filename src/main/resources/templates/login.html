@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+
+<head>
+    <title>login</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="container">
+
+        <div th:if="${param.error}">
+            <div class="alert alert-danger mb-3">Senha ou username
+                inválido!
+            </div>
+        </div>
+        <div th:if="${param.logout}">
+            <div class="alert alert-primary mb-3">Você está desconectado!
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6  col-md-6 container clearfix">
+                <div class="card">
+                    <div class="card-header mb-3">
+                        <p class="text-primary" style="text-align:center"><b>Login</b></p>
+                    </div>
+                    <div class="card-body mb-3">
+                        <form th:action="@{/}" method="post">
+                            <div class="form-row">
+                                <div class="form-group mb-3">
+                                    <label for="username">Username: </label>
+                                    <input name="username" class="form-control" placeholder="username"/>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="password">Password: </label>
+                                    <input type="password" name="password" class="form-control" placeholder="password"/>
+                                </div>
+                                <button class="btn btn-primary " type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
+
+
