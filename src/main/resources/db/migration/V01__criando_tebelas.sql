@@ -13,12 +13,6 @@ genero VARCHAR(255) NOT NULL,
 casas_id BIGINT,
 CONSTRAINT fk_casas FOREIGN KEY (casas_id) REFERENCES casa(id));
 
-CREATE TABLE USUARIO(
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  nome varchar(255) DEFAULT NULL,
-  username varchar(255) DEFAULT NULL,
-  password varchar(255) DEFAULT NULL);
-
 INSERT  INTO CASA(nome, endereco) VALUES('casa1', 'Rua1');
 INSERT  INTO CASA(nome, endereco) VALUES('casa2', 'Rua2');
 INSERT  INTO CASA(nome, endereco) VALUES('casa3', 'Rua3');

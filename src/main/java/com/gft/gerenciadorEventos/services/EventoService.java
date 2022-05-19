@@ -16,20 +16,15 @@ public class EventoService {
 
     //-----------------------------------------------------------------------
     public Evento salvarEvento(Evento evento){
-
         return eventoRepository.save(evento);
     }
 
     //-----------------------------------------------------------------------
     public List<Evento> listarEvento(){
-
         return eventoRepository.findAll();
-
     }
-
     //-----------------------------------------------------------------------
     public Evento obterEvento(Long id) throws Exception {
-
         Optional<Evento> evento = eventoRepository.findById(id);
 
         if(evento.isEmpty()){
@@ -40,13 +35,6 @@ public class EventoService {
     }
     //-----------------------------------------------------------------------
     public void excluirEvento(Long id){
-
         eventoRepository.deleteById(id);
-
     }
-
-
-
-
-
 }

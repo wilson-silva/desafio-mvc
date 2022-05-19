@@ -8,11 +8,15 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Evento {
 
     @Id
@@ -36,70 +40,4 @@ public class Evento {
     @ManyToOne
 	@JoinColumn(name="casas_id")
     private Casa casas;
-
-
-	public Long getCapacidade() {
-		return capacidade;
-	}
-
-	public void setCapacidade(Long capacidade) {
-		this.capacidade = capacidade;
-	}
-
-	public Long getId() {
-		return Id;
-	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public BigDecimal getValorIngresso() {
-		return valorIngresso;
-	}
-
-	public void setValorIngresso(BigDecimal valorIngresso) {
-		this.valorIngresso = valorIngresso;
-	}
-
-	public Casa getCasas() {
-		return casas;
-	}
-
-	public void setCasas(Casa casas) {
-		this.casas = casas;
-	}
-
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
-
-    
-    
-
-
-
-
-
 }

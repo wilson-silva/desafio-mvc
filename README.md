@@ -8,11 +8,11 @@ Com o usuário user pode comprar ingresso, ver o carrinho de compra e etc.
 
 ## Rodar Projeto
 Obs: assim que o servidor subir colocar localhost:8080 que já sera redirecionado para a tela de login
-Foi criado usuario e senha na memória.
+Foi criado usuario admin na memoria e o usuario tem que logar.
 
 * 1 - admin admin
 * 2 - user1 user1
-* 3 - user2 user2
+
 
 Assim que voce subir o projeto este valores irão ser populados automaticamente
 

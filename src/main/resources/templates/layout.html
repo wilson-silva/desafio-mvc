@@ -58,15 +58,15 @@
 
 					</ul>
 
-					<!--
+
 					<div class="d-flex">
 						<a class="nav-link" style="color: white"  sec:authorize="!isAuthenticated()"  th:href="@{/usuario/novo}">Cadastrar</a>
 					</div>
-					-->
+
 
 
 					<div class="d-flex">
-						<a class="nav-link" style="color: white"  sec:authorize="!isAuthenticated()"  href="@{/}">Login</a>
+						<a class="nav-link" style="color: white"  sec:authorize="!isAuthenticated()"  href="@{/login}">Login</a>
 						<a onclick="document.querySelector('#form-login').submit() "class="nav-link "  style="color: white"  sec:authorize="isAuthenticated()" href="#">Logout</a>
 						<form id="form-login" th:action="@{/logout}" method="post"></form>
 					</div>

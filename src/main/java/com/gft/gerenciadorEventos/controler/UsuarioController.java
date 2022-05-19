@@ -26,7 +26,7 @@ public class UsuarioController {
     //-----------------------------------------------------------------------
     @RequestMapping(path = "novo")
     public ModelAndView usuario() {
-        ModelAndView mv = new ModelAndView("cliente/cadastrar.html");
+        ModelAndView mv = new ModelAndView("cliente/cadastrar");
         mv.addObject("usuario", new Usuario());
         mv.addObject("listaUsuario", usuarioService.listarUsuario());
         return mv;
@@ -37,7 +37,7 @@ public class UsuarioController {
     public ModelAndView salvarUsuario(@Valid Usuario usuario, BindingResult result,
                                      RedirectAttributes attributes) {
 
-        ModelAndView mv = new ModelAndView("cliente/cadastrar.html");
+        ModelAndView mv = new ModelAndView("cliente/cadastrar");
 
 
         if (result.hasErrors()) {
@@ -47,7 +47,7 @@ public class UsuarioController {
 
         usuarioService.salvarUsuario(usuario);
 
-        if (usuario.getId() == null) {
+        if (usuario.getLogin() == null) {
             mv.addObject("usuario", new Usuario());
         } else {
             mv.addObject("usuario", usuario);
@@ -68,12 +68,12 @@ public class UsuarioController {
 
     //-----------------------------------------------------------------------
     @RequestMapping("/editar")
-    public ModelAndView editarUsuario(@RequestParam Long id) {
+    public ModelAndView editarUsuario(@RequestParam String login) {
         ModelAndView mv = new ModelAndView("cliente/cadastrar.html");
         Usuario usuario;
 
         try {
-            usuario = usuarioService.obterUsuario(id);
+            usuario = usuarioService.obterUsuario(login);
         } catch (Exception e) {
             usuario = new Usuario();
             mv.addObject("mensagem", e.getMessage());
@@ -86,12 +86,12 @@ public class UsuarioController {
 
     //-----------------------------------------------------------------------
     @RequestMapping("/excluir")
-    public ModelAndView excluirUsuario(@RequestParam Long id, RedirectAttributes attributes) {
+    public ModelAndView excluirUsuario(@RequestParam String login, RedirectAttributes attributes) {
 
         ModelAndView mv = new ModelAndView("redirect:/cliente/novo");
 
         try {
-            usuarioService.excluirUsuario(id);
+            usuarioService.excluirUsuario(login);
             attributes.addFlashAttribute("mensagem", "Usuario excluido com sucesso!");
         } catch (Exception e) {
             attributes.addFlashAttribute("mensagem", "Erro ao excluir Usuario " + e.getMessage());

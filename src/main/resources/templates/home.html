@@ -32,28 +32,7 @@
                                                                                        height="150"></span>
 
         </th:block>
-<!--
 
-              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).SAMBA}"><img src="samba.jpeg"
-                                                                                                      class="float-start"
-                                                                                                      alt="logo-samba"
-                                                                                                      width="150"
-                                                                                                      height="150"></p>
-
-              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).SERTANEJO}"><img src="sertanejo.jpeg"
-                                                                                                      class="float-start"
-                                                                                                      alt="logo-sertanejo"
-                                                                                                      width="150"
-                                                                                                      height="150"></p>
-
-              <p th:if="${evento.genero == T(com.gft.gerenciadorEventos.entities.Genero).ROCK}"><img src="rock.jpeg"
-                                                                                                          class="float-start"
-                                                                                                          alt="logo-rock"
-                                                                                                          width="150"
-                                                                                                          height="150"></p>
-
-
--->
         <div class="container4">
             <p><strong><span th:text="${evento.nome}"></span></strong></p>
             <p>Preço do Ingresso: <span
@@ -61,7 +40,7 @@
             <p>Data: <span th:text="${#dates.format(evento.data, 'dd/MM/yyyy')}"></span></p>
             <p>Local: <span th:text="${evento.casas.endereco}"></span></p>
             <p>Ingresso Restantes: <span th:text="${evento.capacidade}"></span></p>
-            <a class="btn btn-primary btn-sm mb-3" th:href="@{/adicionarVenda/{id}(id=${evento.id})}">Comprar</a>
+            <a sec:authorize="hasRole('ROLE_USER')" class="btn btn-primary btn-sm mb-3" th:href="@{/adicionarVenda/{id}(id=${evento.id})}">Comprar</a>
         </div>
 
 

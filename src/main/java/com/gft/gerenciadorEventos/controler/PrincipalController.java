@@ -36,12 +36,10 @@ public class PrincipalController {
 			System.out.println(username);
 		}
 
-
 		ModelAndView mv = new ModelAndView("home.html");
 		mv.addObject("lista", eventoService.listarEvento());
 		mv.addObject("listaCasa", casaService.listarCasaDeShow ());
 		return mv;
-
 	}
 	
 	
