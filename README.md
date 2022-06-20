@@ -26,7 +26,7 @@ Pré-requisitos:
 
 ```bash
 # clonar repositório
-https://github.com/wilson-silva/desafioMVC.git
+git clone https://github.com/wilson-silva/desafioMVC
 
 # entrar na pasta do projeto desafio_mvc
 cd desafio_mvc ou abrir o bash dentro da pasta
