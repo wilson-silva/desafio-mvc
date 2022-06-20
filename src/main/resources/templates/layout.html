@@ -39,7 +39,7 @@
 								<ul class="dropdown-menu"
 									aria-labelledby="navbarDropdownMenuLink">
 									<!--   <li><a class="dropdown-item" th:href="@{/casa}">Listar</a></li>-->
-									<li><a class="dropdown-item"  sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/casa/novo}">Cadastrar</a></li>
+									<li><a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item"  th:href="@{/casa/novo}">Cadastrar</a></li>
 								</ul>
 							</li>
 							
@@ -53,8 +53,8 @@
 									<li><a class="dropdown-item"  sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/evento/novo}">Cadastrar</a></li>
 								</ul>
 							</li>
-						<li class="nav-item"><a class="nav-link" href="/venda">Carrinho</a></li>
-						<li class="nav-item"><a class="nav-link" href="/historico">Historico</a></li>
+						<li class="nav-item"><a sec:authorize="hasRole('ROLE_USER')" class="nav-link" href="/venda">Carrinho</a></li>
+						<li class="nav-item"><a sec:authorize="hasRole('ROLE_USER')"  class="nav-link" href="/historico">Historico</a></li>
 
 					</ul>
 
